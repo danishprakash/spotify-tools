@@ -1,6 +1,6 @@
 import bs4, requests
 
-playlistReq = requests.get('https://open.spotify.com/user/danishprakash/playlist/0IafjIgTPz03TMIAkll402')
+playlistReq = requests.get('https://open.spotify.com/user/danishprakash/playlist/4MsaDGPQ8SX7k2tvaHAU36')
 playlistReq.raise_for_status()
 playlistSoup = bs4.BeautifulSoup(playlistReq.text, "lxml")
 songUrl = playlistSoup.find_all('meta', property='music:song')
@@ -14,5 +14,5 @@ for i in range(len(songUrl)):
     artistReq = requests.get(artistUrl['content'])
     artistSoup = bs4.BeautifulSoup(artistReq.text, "lxml")
     artistName = artistSoup.find('meta', property='og:title')
-    print(songName['content']+' - ' + artistName['content'])
+    print(str(i+1) + '. ' + songName['content']+' - ' + artistName['content'])
 
