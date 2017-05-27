@@ -1,7 +1,7 @@
 import bs4
 import requests
 
-playlist = open('playlis.txt', 'wb')
+playlist = open('playlist.txt', 'w')
 
 playlistReq = requests.get('https://open.spotify.com/user/danishprakash/playlist/4MsaDGPQ8SX7k2tvaHAU36')
 playlistReq.raise_for_status()
@@ -17,5 +17,8 @@ for i in range(len(songUrl)):
     artistReq = requests.get(artistUrl['content'])
     artistSoup = bs4.BeautifulSoup(artistReq.text, "lxml")
     artistName = artistSoup.find('meta', property='og:title')
-    playlist.write(str(i+1) + '. ' + songName['content']+' - ' + artistName['content'])
+    temp = (str(i+1) + '. ' + songName['content']+' - ' +
+            artistName['content']+ '\n')
+    playlist.write(temp)
 
+playlist.close()
