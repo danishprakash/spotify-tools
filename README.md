@@ -1,7 +1,7 @@
 # Spotify Tools (WIP)
 Simple script for Spotify users.
 Currently:
-1. Exports a Spotify playlist to a `.txt` file.
+- Exports a Spotify playlist to a `.txt` file.
 
 ---
 
